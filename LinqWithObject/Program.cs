@@ -40,10 +40,10 @@ namespace LinqWithObject
                 new ApplicationException()     
             };
             var numberErrors = errors.OfType<ArithmeticException>();
-                foreach (var error in numberErrors)
-                {
-                    WriteLine(error) ;
-                }
+            foreach (var error in numberErrors)
+            {
+                WriteLine(error) ;
+            }
         }
         static void Main(string[] args)
         {
