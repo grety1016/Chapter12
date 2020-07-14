@@ -37,9 +37,33 @@ namespace LinqWithEFCore
             }
 
         }
+
+        static void JoinCategoriesAndProducts()
+        {
+            using(var db = new Northwind())
+            {
+                //join every product to its category to return 77 matches
+                var joinquery = db.Categories.Join(
+                inner:db.Products,
+                outerKeySelector:Category => Category.CategoryID,
+                innerKeySelector:Product => Product.CategoryID,
+                resultSelector:(c,p) =>new {c.CategoryName,p.ProductName,p.ProductID})
+                .OrderBy(cp => cp.ProductID);
+
+                foreach(var item in joinquery)
+                {
+                    WriteLine("{0}:{1} is in {2}.",
+                    arg0:item.ProductID,
+                    arg1:item.ProductName,
+                    arg2:item.CategoryName);
+                }
+            }
+
+        }
         static void Main(string[] args)
         {
-            FileAndSort();
+            //FileAndSort();
+            JoinCategoriesAndProducts();
 
         }
     }
