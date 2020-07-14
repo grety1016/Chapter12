@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Pack.Shared
+namespace Packt.Shared
 {
     public class Product
     {

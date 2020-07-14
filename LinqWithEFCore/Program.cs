@@ -1,4 +1,8 @@
 ﻿using System;
+using static System.Console;
+using Packt.Shared;
+using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace LinqWithEFCore
 {
@@ -6,8 +10,7 @@ namespace LinqWithEFCore
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-          
+                      
 
         }
     }

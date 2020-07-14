@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace Pack.Shared
+namespace Packt.Shared
 {
     public class Northwind:DbContext
     {
