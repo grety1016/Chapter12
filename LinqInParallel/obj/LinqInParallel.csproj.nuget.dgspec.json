@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Grety\\Desktop\\chapter12\\LinqWithEFCore\\LinqWithEFCore.csproj": {}
+    "C:\\Users\\Grety\\Desktop\\chapter12\\LinqInParallel\\LinqInParallel.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Grety\\Desktop\\chapter12\\LinqWithEFCore\\LinqWithEFCore.csproj": {
+    "C:\\Users\\Grety\\Desktop\\chapter12\\LinqInParallel\\LinqInParallel.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Grety\\Desktop\\chapter12\\LinqWithEFCore\\LinqWithEFCore.csproj",
-        "projectName": "LinqWithEFCore",
-        "projectPath": "C:\\Users\\Grety\\Desktop\\chapter12\\LinqWithEFCore\\LinqWithEFCore.csproj",
+        "projectUniqueName": "C:\\Users\\Grety\\Desktop\\chapter12\\LinqInParallel\\LinqInParallel.csproj",
+        "projectName": "LinqInParallel",
+        "projectPath": "C:\\Users\\Grety\\Desktop\\chapter12\\LinqInParallel\\LinqInParallel.csproj",
         "packagesPath": "C:\\Users\\Grety\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Grety\\Desktop\\chapter12\\LinqWithEFCore\\obj\\",
+        "outputPath": "C:\\Users\\Grety\\Desktop\\chapter12\\LinqInParallel\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -40,12 +40,6 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "dependencies": {
-            "Microsoft.EntityFrameworkCore.Sqlite": {
-              "target": "Package",
-              "version": "[3.0.0, )"
-            }
-          },
           "imports": [
             "net461",
             "net462",

@@ -14,6 +14,7 @@ namespace LinqWithEFCore
             using(var db = new Northwind())
             {
                 var query = db.Products
+                .ProcessSequence()
                 .Where(product => product.UnitPrice < 10M)
                 .OrderByDescending(Product => Product.UnitPrice)
                 .Select(product => new
@@ -117,23 +118,42 @@ namespace LinqWithEFCore
                 .Sum(p => p.UnitPrice * p.UnitsInStock)) ;
             }
         }
+
+        static void CustomExtensionMethods()
+        {
+            using (var db = new Northwind() )
+            {
+                WriteLine("Mean units in stock:{0:N0}",
+                db. Products. Average(p => p. UnitsInStock) ) ;
+                WriteLine("Mean unit price: {0:$#,##0.00}",
+                db. Products. Average(p => p. UnitPrice) ) ;
+                WriteLine("Median units in stock: {0:N0}",
+                db. Products. Median(p => p. UnitsInStock) ) ;
+                WriteLine("Median unit price: {0:$#,##0.00}",
+                db. Products. Median(p => p. UnitPrice) ) ;
+                WriteLine("Mode units in stock: {0:N0}",
+                db. Products. Mode(p => p. UnitsInStock) ) ;
+                WriteLine("Mode unit price: {0:$#,##0.00}",
+                db. Products. Mode(p => p. UnitPrice) ) ;
+            }
+        }
         static void Main(string[] args)
         {
-            var names = new string[] { "Michael", "Pam", "Jim", "Dwight","Angela", "Kevin", "Toby", "Creed" };
-            var query = (from name in names where name.Length > 4
-                            select name)
-            .Skip(2)
-            .Take(2) ;
+            // var names = new string[] { "Michael", "Pam", "Jim", "Dwight","Angela", "Kevin", "Toby", "Creed" };
+            // var query = (from name in names where name.Length > 4
+            //                 select name)
+            // .Skip(2)
+            // .Take(2) ;
             // var query = from name in names
-            // where name. Length > 4
-            // orderby name. Length, name
+            // where name.Length > 4
+            // orderby name.Length, name
             // select name;
 
-            foreach(var item in query)
-            {
-                WriteLine($"{item}");
-            }
-
+            // foreach(var item in query)
+            // {
+            //     WriteLine($"{item}");
+            // }
+            CustomExtensionMethods();
             //FileAndSort();
             //JoinCategoriesAndProducts();
             //GroupJoinCategoriesAndProducts();

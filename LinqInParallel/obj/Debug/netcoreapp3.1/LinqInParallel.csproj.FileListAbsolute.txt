@@ -1,0 +1,11 @@
+C:\Users\Grety\Desktop\chapter12\LinqInParallel\bin\Debug\netcoreapp3.1\LinqInParallel.exe
+C:\Users\Grety\Desktop\chapter12\LinqInParallel\bin\Debug\netcoreapp3.1\LinqInParallel.deps.json
+C:\Users\Grety\Desktop\chapter12\LinqInParallel\bin\Debug\netcoreapp3.1\LinqInParallel.runtimeconfig.json
+C:\Users\Grety\Desktop\chapter12\LinqInParallel\bin\Debug\netcoreapp3.1\LinqInParallel.runtimeconfig.dev.json
+C:\Users\Grety\Desktop\chapter12\LinqInParallel\bin\Debug\netcoreapp3.1\LinqInParallel.dll
+C:\Users\Grety\Desktop\chapter12\LinqInParallel\bin\Debug\netcoreapp3.1\LinqInParallel.pdb
+C:\Users\Grety\Desktop\chapter12\LinqInParallel\obj\Debug\netcoreapp3.1\LinqInParallel.csprojAssemblyReference.cache
+C:\Users\Grety\Desktop\chapter12\LinqInParallel\obj\Debug\netcoreapp3.1\LinqInParallel.AssemblyInfoInputs.cache
+C:\Users\Grety\Desktop\chapter12\LinqInParallel\obj\Debug\netcoreapp3.1\LinqInParallel.AssemblyInfo.cs
+C:\Users\Grety\Desktop\chapter12\LinqInParallel\obj\Debug\netcoreapp3.1\LinqInParallel.dll
+C:\Users\Grety\Desktop\chapter12\LinqInParallel\obj\Debug\netcoreapp3.1\LinqInParallel.pdb
