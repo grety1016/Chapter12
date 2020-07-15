@@ -3,6 +3,7 @@ using static System.Console;
 using Packt.Shared;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using System.Xml.Linq;
 
 namespace LinqWithEFCore
 {
@@ -137,6 +138,21 @@ namespace LinqWithEFCore
                 db. Products. Mode(p => p. UnitPrice) ) ;
             }
         }
+
+        static void OutputProductsAsXml()
+        {
+            using (var db = new Northwind() )
+            {
+                var productsForXml = db.Products.ToArray() ;
+                var xml = new XElement("products",
+                from p in productsForXml
+                select new XElement("product",
+                new XAttribute("id", p. ProductID) ,
+                new XAttribute("price", p. UnitPrice) ,
+                new XElement("name", p. ProductName) ) ) ;
+                WriteLine(xml.ToString() ) ;
+                }
+        }
         static void Main(string[] args)
         {
             // var names = new string[] { "Michael", "Pam", "Jim", "Dwight","Angela", "Kevin", "Toby", "Creed" };
@@ -153,11 +169,12 @@ namespace LinqWithEFCore
             // {
             //     WriteLine($"{item}");
             // }
-            CustomExtensionMethods();
+            //CustomExtensionMethods();
             //FileAndSort();
             //JoinCategoriesAndProducts();
             //GroupJoinCategoriesAndProducts();
             //AggregateProducts();
+            OutputProductsAsXml();
         }
     }
 }
