@@ -60,11 +60,84 @@ namespace LinqWithEFCore
             }
 
         }
+
+        static void GroupJoinCategoriesAndProducts()
+        {
+            using (var db = new Northwind())
+            {
+                var queryGroup = db.Categories.AsEnumerable().GroupJoin(
+                    inner:db.Products,
+                    outerKeySelector:Category => Category.CategoryID,
+                    innerKeySelector:Product => Product.CategoryID,
+                    resultSelector:(c,matchingProducts) =>new{
+                        c.CategoryName,
+                        proudcts = matchingProducts.OrderBy(p => p.ProductName)
+                    });
+
+                    foreach(var item in queryGroup)
+                    {
+                        WriteLine();
+                        WriteLine("{0} has {1} products.",
+                        arg0:item.CategoryName,
+                        arg1:item.proudcts.Count());
+
+                        foreach(var product in item.proudcts)
+                        {
+                            WriteLine($"{product.ProductName}");                            
+                        }
+                    }
+            }
+        }
+
+        static void AggregateProducts()
+        {
+            using (var db = new Northwind() )
+            {
+                WriteLine("{0,-25} {1,10}",
+                arg0: "Product count:",
+                arg1: db.Products.Count()) ;
+
+                WriteLine("{0,-25} {1,10:$#,##0.00}",
+                arg0: "Highest product price:",
+                arg1: db.Products.Max(p => p.UnitPrice)) ;
+
+                WriteLine("{0,-25} {1,10:N0}",
+                arg0: "Sum of units in stock: ",
+                arg1: db.Products.Sum(p => p.UnitsInStock)) ;
+
+                WriteLine("{0,-25} {1,10:N0}",
+                arg0: "Sum of units on order: ",
+                arg1: db.Products.Sum(p => p.UnitsOnOrder)) ;
+                WriteLine("{0,-25} {1,10:$#,##0.00}",
+                arg0: "Average unit price: ",
+                arg1: db.Products.Average(p => p.UnitPrice) ) ;
+                WriteLine("{0,-25} {1,10:$#,##0.00}",
+                arg0: "Value of units in stock: ",
+                arg1: db.Products.AsEnumerable()
+                .Sum(p => p.UnitPrice * p.UnitsInStock)) ;
+            }
+        }
         static void Main(string[] args)
         {
-            //FileAndSort();
-            JoinCategoriesAndProducts();
+            var names = new string[] { "Michael", "Pam", "Jim", "Dwight","Angela", "Kevin", "Toby", "Creed" };
+            var query = (from name in names where name.Length > 4
+                            select name)
+            .Skip(2)
+            .Take(2) ;
+            // var query = from name in names
+            // where name. Length > 4
+            // orderby name. Length, name
+            // select name;
 
+            foreach(var item in query)
+            {
+                WriteLine($"{item}");
+            }
+
+            //FileAndSort();
+            //JoinCategoriesAndProducts();
+            //GroupJoinCategoriesAndProducts();
+            //AggregateProducts();
         }
     }
 }
