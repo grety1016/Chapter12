@@ -20,7 +20,7 @@ namespace System.Linq
         public static int? Median<T>(
         this IEnumerable<T> sequence, Func<T, int?> selector)
         {
-        return sequence.Select(selector).Median() ;
+        return sequence.Select(selector).Median();
         }
         public static decimal? Median(
         this IEnumerable<decimal?> sequence)
@@ -32,7 +32,7 @@ namespace System.Linq
         public static decimal? Median<T>(
             this IEnumerable<T> sequence, Func<T, decimal?> selector)
         {
-        return sequence. Select(selector) . Median() ;
+        return sequence.Select(selector) . Median() ;
         }
         public static int? Mode(this IEnumerable<int?> sequence)
         {

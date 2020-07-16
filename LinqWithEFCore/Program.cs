@@ -129,7 +129,7 @@ namespace LinqWithEFCore
                 WriteLine("Mean unit price: {0:$#,##0.00}",
                 db. Products. Average(p => p. UnitPrice) ) ;
                 WriteLine("Median units in stock: {0:N0}",
-                db. Products. Median(p => p. UnitsInStock) ) ;
+                db.Products.Median(p => p. UnitsInStock) ) ;
                 WriteLine("Median unit price: {0:$#,##0.00}",
                 db. Products. Median(p => p. UnitPrice) ) ;
                 WriteLine("Mode units in stock: {0:N0}",
@@ -147,19 +147,39 @@ namespace LinqWithEFCore
                 var xml = new XElement("products",
                 from p in productsForXml
                 select new XElement("product",
-                new XAttribute("id", p. ProductID) ,
-                new XAttribute("price", p. UnitPrice) ,
-                new XElement("name", p. ProductName) ) ) ;
+                new XAttribute("id", p. ProductID),
+                new XAttribute("price", p. UnitPrice),
+                new XElement("name", p. ProductName)));
                 WriteLine(xml.ToString() ) ;
+                
                 }
+        }
+
+        static void ProcessSettings()
+        {
+            XDocument doc = XDocument.Load("settings.xml");
+
+            var appSettings = doc.Descendants("appSettings")
+                .Descendants("add")
+                .Select(node => new
+                {
+                Key = node.Attribute("key").Value,
+                Value = node.Attribute("value").Value
+                }).ToArray();
+
+            foreach (var item in appSettings)
+            {
+                WriteLine($"{item.Key}: {item.Value}");
+            }
         }
         static void Main(string[] args)
         {
             // var names = new string[] { "Michael", "Pam", "Jim", "Dwight","Angela", "Kevin", "Toby", "Creed" };
-            // var query = (from name in names where name.Length > 4
-            //                 select name)
+            // var query =names
+            // .Where(name => name.Length > 4) 
             // .Skip(2)
-            // .Take(2) ;
+            // .Take(3)
+            // .Select(name => name) ;
             // var query = from name in names
             // where name.Length > 4
             // orderby name.Length, name
@@ -174,7 +194,8 @@ namespace LinqWithEFCore
             //JoinCategoriesAndProducts();
             //GroupJoinCategoriesAndProducts();
             //AggregateProducts();
-            OutputProductsAsXml();
+            //OutputProductsAsXml();
+            ProcessSettings();
         }
     }
 }
